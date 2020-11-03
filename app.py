@@ -31,7 +31,7 @@ def create_app(test_config=None):
         all_actors = Actors.query.order_by(Actors.id).all()
         return jsonify({
         'success': True,
-        'actors': [actor.name for actor in all_actors]
+        'actors': [ (actor.id, actor.name)  for actor in all_actors]
     })
 
     @app.route('/movies', methods=['GET'])
@@ -40,7 +40,7 @@ def create_app(test_config=None):
         all_movies = Movies.query.order_by(Movies.id).all()
         return jsonify({
         'success': True,
-        'movies': [movie.title for movie in all_movies]
+        'movies': [(movie.id, movie.title) for movie in all_movies]
     })
 
     @app.route('/actors/<int:id>', methods=['DELETE'])
