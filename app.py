@@ -169,6 +169,24 @@ def create_app(test_config=None):
         }), 400
     return app
 
+    @app.errorhandler(403)
+    def bad_request(error):
+        return jsonify({
+            "success": False,
+            "error": 403,
+            "message": "unauthorized. Permission not found"
+        }), 400
+    return app
+
+    @app.errorhandler(401)
+    def bad_request(error):
+        return jsonify({
+            "success": False,
+            "error": 401,
+            "message": "Not authorized to perform action"
+        }), 400
+    return app
+    
 app = create_app()
 
 if __name__ == '__main__':
