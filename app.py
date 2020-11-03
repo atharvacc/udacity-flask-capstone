@@ -115,7 +115,7 @@ def create_app(test_config=None):
 
         data = request.get_json()
         if 'name' in data:
-            actor.name = data['title']
+            actor.name = data['name']
         if 'age' in data:
             actor.age = data['age']
         if 'gender' in data:
