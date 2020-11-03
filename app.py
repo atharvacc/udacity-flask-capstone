@@ -36,7 +36,7 @@ def create_app(test_config=None):
 
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
-    def get_movies():
+    def get_movies(jwt):
         all_movies = Movies.query.order_by(Movies.id).all()
         return jsonify({
         'success': True,
@@ -45,7 +45,7 @@ def create_app(test_config=None):
 
     @app.route('/actors/<int:id>', methods=['DELETE'])
     @requires_auth('delete:actors')
-    def delete_actors( id):
+    def delete_actors( jwt, id):
         actor = Actors.query.get(id)
         if actor is None:
             abort(404)
@@ -73,7 +73,7 @@ def create_app(test_config=None):
 
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
-    def post_movies():
+    def post_movies(jwt):
         data = request.get_json()
         if 'title' and 'release_date' not in data:
             abort(422)
@@ -90,7 +90,7 @@ def create_app(test_config=None):
 
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actors')
-    def post_actors():
+    def post_actors(jwt):
         data = request.get_json()
         if 'name' and 'age' and 'gender' not in data:
             abort(422)
@@ -108,7 +108,7 @@ def create_app(test_config=None):
 
     @app.route('/actors/<int:id>', methods=['PATCH'])
     @requires_auth('patch:actors')
-    def update_actors(id):
+    def update_actors(jwt, id):
         actor = Actors.query.get(id)
         if actor is None:
             abort(404)
@@ -128,7 +128,7 @@ def create_app(test_config=None):
 
     @app.route('/movies/<int:id>', methods=['PATCH'])
     @requires_auth('patch:movies')
-    def update_movies(id):
+    def update_movies(jwt, id):
         movie = Movies.query.get(id)
         if movie is None:
             abort(404)
