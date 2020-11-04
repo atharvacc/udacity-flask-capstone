@@ -177,6 +177,7 @@ def create_app(test_config=None):
         "error": auth_error.status_code,
         "message": auth_error.error['description']
         }), auth_error.status_code
+        return app
 
 
 app = create_app()
