@@ -175,7 +175,7 @@ def create_app(test_config=None):
             "success": False,
             "error": 403,
             "message": "unauthorized. Permission not found"
-        }), 400
+        }), 403
     return app
 
     @app.errorhandler(401)
@@ -184,9 +184,9 @@ def create_app(test_config=None):
             "success": False,
             "error": 401,
             "message": "Not authorized to perform action"
-        }), 400
+        }), 401
     return app
-    
+
 app = create_app()
 
 if __name__ == '__main__':
