@@ -30,22 +30,22 @@ def create_app(test_config=None):
     def get_actors(jwt):
         all_actors = Actors.query.order_by(Actors.id).all()
         return jsonify({
-        'success': True,
-        'actors': [ (actor.id, actor.name)  for actor in all_actors]
-    })
+            'success': True,
+            'actors': [(actor.id, actor.name) for actor in all_actors]
+        })
 
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
     def get_movies(jwt):
         all_movies = Movies.query.order_by(Movies.id).all()
         return jsonify({
-        'success': True,
-        'movies': [(movie.id, movie.title) for movie in all_movies]
-    })
+            'success': True,
+            'movies': [(movie.id, movie.title) for movie in all_movies]
+        })
 
     @app.route('/actors/<int:id>', methods=['DELETE'])
     @requires_auth('delete:actors')
-    def delete_actors( jwt, id):
+    def delete_actors(jwt, id):
         actor = Actors.query.get(id)
         if actor is None:
             abort(404)
@@ -168,20 +168,19 @@ def create_app(test_config=None):
             "message": "bad request"
         }), 400
 
-
     @app.errorhandler(AuthError)
     def auth_error(auth_error):
         return jsonify({
-        "success": False,
-        "error": auth_error.status_code,
-        "message": auth_error.error['description']
+            "success": False,
+            "error": auth_error.status_code,
+            "message": auth_error.error['description']
         }), auth_error.status_code
-        
+
     return app
 
 
 app = create_app()
 
 if __name__ == '__main__':
-    
+
     app.run()
