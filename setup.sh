@@ -1,3 +1,3 @@
-AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
-ALGORITHMS = os.environ.get['ALGORITHMS']
-API_AUDIENCE = os.environ.get('API_AUDIENCE')
+export AUTH0_DOMAIN="dev-m1jn20bq.us.auth0.com"
+export ALGORITHMS='RS256'
+export API_AUDIENCE='capstone_project'
