@@ -4,15 +4,15 @@
 https://movie-app-ac.herokuapp.com
 Note: please use the tokens provided in submission if needed
 
-#Roles:
-## Casting Assistant
+## Roles
+### Casting Assistant
 - get:actors, get:movies
-## Casting Director
+### Casting Director
 - get:actors, get:movies, post:actors, delete:actors, patch:actors, patch:movies
 - All permissions a Casting Assistant has and…
 - Add or delete an actor from the database
 - Modify actors or movies
-## Executive Producer
+### Executive Producer
 - get:actors, get:movies, post:actors, delete:actors, patch:actors, patch:movies, post:movies, delete: movies
 
 ## Motivation
