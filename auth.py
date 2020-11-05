@@ -5,13 +5,11 @@ from jose import jwt
 from urllib.request import urlopen
 import logging
 from logging import FileHandler, Formatter
+import os 
 
-
-#AUTH0_DOMAIN = 'tomariken.auth0.com'
-AUTH0_DOMAIN = "dev-m1jn20bq.us.auth0.com"
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'capstone_project'
-CLIENT_ID = 'f2K3VYWTSzSfXGQXijXjNRbZov6s3s0H'
+AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
+ALGORITHMS = os.environ.get('ALGORITHMS')
+API_AUDIENCE = os.environ.get("API_AUDIENCE")
 
 # Set up logging
 '''
