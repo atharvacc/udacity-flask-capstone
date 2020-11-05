@@ -56,13 +56,13 @@ python -m unittest
 - /movies 
 
 ### Delete
-- /actors/\`<id>`
-- /movies/\`<id>`
+- /actors/\ `<id>`
+- /movies/\ `<id>`
 
 ### POST
 - /actors
 - /movies
 
 ### PATCH
-- /actors/\`<id>`
-- /movies/\<`<id>`
+- /actors/\ `<id>`
+- /movies/\ `<id>`
