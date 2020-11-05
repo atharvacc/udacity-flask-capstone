@@ -3,8 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 import os
 
+# Change database path here
 database_path = os.environ['DATABASE_URL']
-
+# database_name = "CastingAgency"
+# database_path = "postgres://{}/{}".format(
+#    'localhost:5432', database_name)
 db = SQLAlchemy()
 
 '''
@@ -40,9 +43,9 @@ class Movies(db.Model):
 
     def format(self):
         return {
-          'id': self.id,
-          'title': self.title,
-          'release_date': self.release_date}
+            'id': self.id,
+            'title': self.title,
+            'release_date': self.release_date}
 
     def delete(self):
         db.session.delete(self)
@@ -77,10 +80,10 @@ class Actors(db.Model):
 
     def format(self):
         return {
-          'id': self.id,
-          'name': self.name,
-          'age': self.age,
-          'gender': self.gender}
+            'id': self.id,
+            'name': self.name,
+            'age': self.age,
+            'gender': self.gender}
 
     def delete(self):
         db.session.delete(self)

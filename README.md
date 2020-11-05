@@ -47,6 +47,7 @@ flask run
 
 ## unit tests 
 ```
+# ensure you use the correct url pointing to the postgres database in models.py
 python -m unittest
 ```
 
